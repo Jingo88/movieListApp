@@ -41,7 +41,9 @@ var cast = document.querySelector('#actors');
 var directors = document.querySelector('#directors');
 var writers = document.querySelector('#writers');
 var genre = document.querySelector('#genre');
-
+var year = document.querySelector('#year');
+var movierating = document.querySelector('#year');
+var imdbrating = document.querySelector('#year');
 
 
 
@@ -61,16 +63,12 @@ submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
     $('.refresh').empty();
     findPoster();
-    
-    // result.className.replace(' disappear', ' appear');
 });
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         $('#movieFound').removeClass('disappear').addClass('appear');
         $('.refresh').empty();
         findPoster();
-        
-        // result.className.replace(' disappear', ' appear');
     }
 })
 
@@ -80,7 +78,6 @@ $('.movieRank').click(function(){
     console.log(this);
     console.log(movie);
     $('.refresh').empty();
-    // var movie = input.value
 
     var movie_url = encodeURI(movie)
     var url = "http://omdbapi.com/?t=" + movie_url
@@ -123,6 +120,7 @@ $('.movieRank').click(function(){
 
 
         // img.src = parsed.Poster;
+
         listtitle.innerText = parsed.Title;
         listmovieInfo.appendChild(listtitle);
         listmovieInfo.appendChild(listcast);
@@ -182,6 +180,7 @@ function findPoster() {
 
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
+
 
         movieInfo.appendChild(title);
         movieInfo.appendChild(cast);

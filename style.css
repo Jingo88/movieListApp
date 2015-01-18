@@ -10,6 +10,10 @@ body{
 	height: 100%;
 }
 
+h1{
+	text-align: center;
+}
+
 .category {
 	padding: 5px;
 	font-weight: 700;
@@ -128,7 +132,6 @@ a{
 {
 	left: 60%;
 }
-
 
 
 
