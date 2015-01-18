@@ -4,8 +4,10 @@ $(document).ready(function(){
     $('#moviepage').addClass('disappear');
     $('#televisionpage').addClass('disappear');
     $('#documentarypage').addClass('disappear');
-
+    $('#movieFound').addClass('disappear');
+    // result.setAttribute('class', 'disappear');
     pageNavigation();
+
 })
 
 function pageNavigation(){
@@ -28,6 +30,8 @@ function removeActive(){
 var body = document.querySelector('body');
 var submit = document.querySelector('#movieFind');
 var input = document.querySelector('#movieInput');
+var result = document.querySelector('#movieFound');
+
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
 var cast = document.querySelector('#actors');
@@ -39,11 +43,17 @@ var category = document.querySelector('.category');
 
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
+    $('#movieFound').removeClass('disappear').addClass('appear');
     findPoster();
+    
+    // result.className.replace(' disappear', ' appear');
 });
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
+        $('#movieFound').removeClass('disappear').addClass('appear');
         findPoster();
+        
+        // result.className.replace(' disappear', ' appear');
     }
 })
 
