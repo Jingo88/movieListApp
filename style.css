@@ -33,6 +33,7 @@ a{
 }
 
 .disappear{
+	display: none;
 	z-index: 0;
 }
 
@@ -79,7 +80,7 @@ a{
     -o-transform-origin: 0 50%;
     transform-origin: 0 50%;
     height: 100vh;
-    /*background: url(http://i.imgur.com/wvunc.jpg);*/
+    background: url(http://i.imgur.com/wvunc.jpg);
 	background-size: cover;
 }
 

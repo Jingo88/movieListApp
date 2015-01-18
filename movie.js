@@ -1,7 +1,28 @@
 $(document).ready(function(){
-    $('#Home').addClass('appear');
-    $('.page').addClass('disappear');
+    $('#homepage').addClass('appear');
+    $('#toppage').addClass('disappear');
+    $('#moviepage').addClass('disappear');
+    $('#televisionpage').addClass('disappear');
+    $('#documentarypage').addClass('disappear');
+
+    pageNavigation();
 })
+
+function pageNavigation(){
+    $(".navLink").click(function(){
+        // removeActive();
+        // $(this).addClass('buttonon');
+        // $('.bc').removeClass('active');
+        // $('.bc').addClass('notactive');
+        var newPage = $(this).attr('id')+'page';
+        $("#"+newPage).removeClass('disappear').addClass('appear'); 
+    });
+}
+
+function removeActive(){
+    $('.navigation').removeClass('buttonon');
+}
+
 
 var body = document.querySelector('body');
 var submit = document.querySelector('button');
