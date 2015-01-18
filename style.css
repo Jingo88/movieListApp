@@ -37,8 +37,12 @@ a{
 	z-index: 0;
 }
 
+/*Navigation Bar CSS*/
 #navBar {
     position: fixed;
+    /*height: 100vh;*/
+    /*margin-top: 0;*/
+    /*padding-top: 0;*/
     left: -13%;
     top: 0;
     bottom: 0;
@@ -170,7 +174,7 @@ img{
 	height: 100%;
 }
 
-#movieInfo{
+#movieInfo, #listmovieInfo{
 	border: 2px solid yellow;
 	position: relative;
 	float: left;
@@ -179,8 +183,21 @@ img{
 	overflow: auto;
 }
 
+
+
+/*TOPPAGE CSS*/
 #toppage{
 	background-color: #8f3131;
+}
+
+#topRank{
+	margin-left: auto;
+	margin-right: auto;
+	float: left;
+	position: relative;
+	border: 2px solid blue;
+	height: 100vh;
+	width: 40%;
 }
 
 #moviepage{

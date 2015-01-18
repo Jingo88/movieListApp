@@ -33,14 +33,28 @@ var input = document.querySelector('#movieInput');
 var result = document.querySelector('#movieFound');
 var movieInfo = document.querySelector('#movieInfo');
 
+
+// Declared variables for the home page
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
 var cast = document.querySelector('#actors');
 var directors = document.querySelector('#directors');
 var writers = document.querySelector('#writers');
 var genre = document.querySelector('#genre');
+
+
+
+
+// Declared variables for the rankings page
 var rank = document.querySelector('#topRank');
-var category = document.querySelector('.category');
+var listmovieInfo = document.querySelector('#listmovieInfo');
+var listtitle = document.querySelector('#listtitle');
+var listcast = document.querySelector('#listactors');
+var listdirectors = document.querySelector('#listdirectors');
+var listwriters = document.querySelector('#listwriters');
+var listgenre = document.querySelector('#listgenre');
+
+
 
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
@@ -58,12 +72,12 @@ input.addEventListener('keyup', function(e) {
     }
 })
 
-category.addEventListener('click', function(){
-    topHundred();
-})
 
-function topHundred(){
-    var movie = input.value
+$('.movieRank').click(function(){
+    var movie = $(this).text()
+    console.log(this);
+    console.log(movie);
+    // var movie = input.value
 
     var movie_url = encodeURI(movie)
     var url = "http://omdbapi.com/?t=" + movie_url
@@ -71,10 +85,52 @@ function topHundred(){
     
     xhr.addEventListener('load', function(e) {
 
+        var d = xhr.responseText
+        var parsed = JSON.parse(d)
+
+        //bringing in the list of movie stuff
+        var castName = parsed.Actors.split(',');
+        var directorName = parsed.Director.split(',');
+        var writerName = parsed.Writer.split(',');
+        var genreType = parsed.Genre.split(',');
+
+        for (i=0; i<castName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = castName[i];
+            listcast.appendChild(li);
+        };
+
+        for (i=0; i<directorName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = directorName[i];
+            listdirectors.appendChild(li);
+        };
+
+        for (i=0; i<writerName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = writerName[i];
+            listwriters.appendChild(li);
+        };
+
+        for (i=0; i<genreType.length; i++){
+            var li = document.createElement("li");
+            li.innerText = genreType[i];
+            listgenre.appendChild(li);
+        };
+
+
+        // img.src = parsed.Poster;
+        listtitle.innerText = parsed.Title;
+        listmovieInfo.appendChild(listtitle);
+        listmovieInfo.appendChild(listcast);
+        listmovieInfo.appendChild(listdirectors);
+        listmovieInfo.appendChild(listwriters);
+        listmovieInfo.appendChild(listgenre);
+
     })
     xhr.open("GET", url);
     xhr.send();
-}
+})
 
 
 
