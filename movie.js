@@ -3,6 +3,7 @@ var submit = document.querySelector('button');
 var input = document.querySelector('input');
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
+var cast = document.querySelector('#actors');
 
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
@@ -16,7 +17,7 @@ input.addEventListener('keyup', function(e) {
 
 function findPoster() {
     var movie = input.value
-    
+
     var movie_url = encodeURI(movie)
     var url = "http://omdbapi.com/?t=" + movie_url
     var xhr = new XMLHttpRequest();
@@ -28,7 +29,13 @@ function findPoster() {
 
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
+        for (i=0; i<parsed.Actors.length; i++){
+            var li = document.createElement("li");
+            li.innerText = parsed.Actors[i];
+            cast.appendChild(li);
+        };
         body.appendChild(title);
+        body.appendChild(cast);
         console.log(parsed);
     })
     xhr.open("GET", url);
