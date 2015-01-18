@@ -16,10 +16,13 @@ input.addEventListener('keyup', function(e) {
 
 function findPoster() {
     var movie = input.value
+    
     var movie_url = encodeURI(movie)
     var url = "http://omdbapi.com/?t=" + movie_url
     var xhr = new XMLHttpRequest();
+
     xhr.addEventListener('load', function(e) {
+
         var d = xhr.responseText
         var parsed = JSON.parse(d)
 
