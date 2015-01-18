@@ -59,6 +59,7 @@ var listgenre = document.querySelector('#listgenre');
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
+    $('.refresh').empty();
     findPoster();
     
     // result.className.replace(' disappear', ' appear');
@@ -66,6 +67,7 @@ submit.addEventListener('click', function() {
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         $('#movieFound').removeClass('disappear').addClass('appear');
+        $('.refresh').empty();
         findPoster();
         
         // result.className.replace(' disappear', ' appear');
@@ -77,6 +79,7 @@ $('.movieRank').click(function(){
     var movie = $(this).text()
     console.log(this);
     console.log(movie);
+    $('.refresh').empty();
     // var movie = input.value
 
     var movie_url = encodeURI(movie)

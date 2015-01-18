@@ -134,7 +134,7 @@ a{
 
 /*fixing up the Home Page*/
 #homepage{
-	background-color: #616061;
+	background-color: #cccacc;
 }
 
 #movieSearch{
@@ -160,7 +160,7 @@ a{
 	left: 20%;
 	position: relative;
 	border: 2px solid blue;
-	height: 40%;
+	height: auto;
 }
 
 #movieCover{
@@ -171,23 +171,25 @@ a{
 }
 
 img{
-	height: 100%;
+	/*height: 100%;*/
+	width: 80%;
 }
 
 #movieInfo, #listmovieInfo{
 	border: 2px solid yellow;
-	position: relative;
 	float: left;
 	width: 50%;
 	height: 100%;
 	overflow: auto;
 }
 
+.refresh{
 
+}
 
 /*TOPPAGE CSS*/
 #toppage{
-	background-color: #8f3131;
+	background-color: #c5bec1;
 }
 
 #topRank{
