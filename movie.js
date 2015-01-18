@@ -4,6 +4,10 @@ var input = document.querySelector('input');
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
 var cast = document.querySelector('#actors');
+var directors = document.querySelector('#directors');
+var writers = document.querySelector('#writers');
+var genre = document.querySelector('#genre');
+
 
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
@@ -27,19 +31,41 @@ function findPoster() {
         var d = xhr.responseText
         var parsed = JSON.parse(d)
         var castName = parsed.Actors.split(',');
+        var directorName = parsed.Director.split(',');
+        var writerName = parsed.Writer.split(',');
+        var genreType = parsed.Genre.split(',');
 
         for (i=0; i<castName.length; i++){
             var li = document.createElement("li");
-            
             li.innerText = castName[i];
             cast.appendChild(li);
         };
 
+        for (i=0; i<directorName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = directorName[i];
+            directors.appendChild(li);
+        };
+
+        for (i=0; i<writerName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = writerName[i];
+            writers.appendChild(li);
+        };
+
+        for (i=0; i<genreType.length; i++){
+            var li = document.createElement("li");
+            li.innerText = genreType[i];
+            genre.appendChild(li);
+        };
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
 
         body.appendChild(title);
         body.appendChild(cast);
+        body.appendChild(directors);
+        body.appendChild(writers);
+        body.appendChild(genre);
         console.log(parsed);
     })
     xhr.open("GET", url);
