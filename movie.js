@@ -36,7 +36,7 @@ function topHundred(){
     }
     xhr.open("GET", url);
     xhr.send();
-}
+})
 
 
 

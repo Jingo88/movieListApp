@@ -3,3 +3,110 @@
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
+body{
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+}
+
+.category {
+	padding: 5px;
+	font-weight: 700;
+	color: #2a0708;
+	font-size: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#navBar {
+    position: fixed;
+    left: -13%;
+    top: 0;
+    bottom: 0;
+    background-color: #654;
+    width: 15%;
+    border-right: 30px solid #e4c3a1;
+    box-shadow: 4px 0 5px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+#navBar:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    width: 0;
+    height: 0;
+    right: -70px;
+    top: 50%;
+    border-width: 15px 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #765;
+}
+
+.page{
+/*	height: 100vh;
+	background-size: cover;*/
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 15%;
+    background-color: #fff;
+    overflow: auto;
+    z-index: 0;
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    -o-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    height: 100vh;
+    /*background: url(http://i.imgur.com/wvunc.jpg);*/
+	background-size: cover;
+}
+
+.page:after{
+	position: absolute;
+    /*content: ' ';*/
+    left: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: -webkit-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background-image: -moz-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background-image: -ms-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background-image: -o-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    background-image: linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.page, .page:after, #navBar, #navBar *
+{
+	-webkit-transition: all 600ms ease;
+	-moz-transition: all 600ms ease;
+	-ms-transition: all 600ms ease;
+	-o-transition: all 600ms ease;
+	transition: all 600ms ease;
+}
+
+#navBar:hover
+{
+	left: 0;
+}
+
+#navBar:hover ~ .page
+{
+	-webkit-transform: translateX(16em) perspective(600px) rotateY(10deg);
+	-moz-transform: translateX(16em) perspective(600px) rotateY(10deg);
+	-ms-transform: translateX(16em) perspective(600px) rotateY(10deg);
+	-o-transform: translateX(16em) perspective(600px) rotateY(10deg);
+	transform: translateX(16em) perspective(600px) rotateY(10deg);
+}
+
+#navBar:hover ~ .page:after
+{
+	left: 60%;
+}
