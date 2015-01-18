@@ -28,6 +28,14 @@ a{
 	color: black;
 }
 
+.appear{
+	z-index: 20;
+}
+
+.disappear{
+	z-index: 0;
+}
+
 #navBar {
     position: fixed;
     left: -13%;

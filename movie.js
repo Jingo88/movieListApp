@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    $('#Home').addClass('appear');
+    $('.page').addClass('disappear');
+})
+
 var body = document.querySelector('body');
 var submit = document.querySelector('button');
 var input = document.querySelector('input');
