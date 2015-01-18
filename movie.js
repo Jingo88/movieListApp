@@ -10,6 +10,7 @@ $(document).ready(function(){
 
 function pageNavigation(){
     $(".navLink").click(function(){
+        $('.page').removeClass('appear').addClass('disappear');
         // removeActive();
         // $(this).addClass('buttonon');
         // $('.bc').removeClass('active');
@@ -25,8 +26,8 @@ function removeActive(){
 
 
 var body = document.querySelector('body');
-var submit = document.querySelector('button');
-var input = document.querySelector('input');
+var submit = document.querySelector('#movieFind');
+var input = document.querySelector('#movieInput');
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
 var cast = document.querySelector('#actors');

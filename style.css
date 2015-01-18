@@ -80,7 +80,6 @@ a{
     -o-transform-origin: 0 50%;
     transform-origin: 0 50%;
     height: 100vh;
-    background: url(http://i.imgur.com/wvunc.jpg);
 	background-size: cover;
 }
 
@@ -125,3 +124,44 @@ a{
 {
 	left: 60%;
 }
+
+
+
+
+/*fixing up the Home Page*/
+#homepage{
+	background-color: #616061;
+}
+
+#movieSearch{
+	position: absolute;
+	width: 70%;
+	height: 40%;
+	/*top: 30%;*/
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid red;
+}
+
+
+
+
+#toppage{
+	background-color: #8f3131;
+}
+
+#moviepage{
+	background-color: #4841af;
+}
+
+#televisionpage{
+	background-color: #56b24d;
+}
+
+#documentarypage{
+	background-color: #b0ab2e;
+}
+
+
+
+
