@@ -1,3 +1,4 @@
+var body = document.querySelector('body');
 var submit = document.querySelector('button');
 var input = document.querySelector('input');
 var img = document.querySelector('img');
@@ -21,11 +22,11 @@ function findPoster() {
     xhr.addEventListener('load', function(e) {
         var d = xhr.responseText
         var parsed = JSON.parse(d)
-        
-        var title = document.querySelector('#title');
 
         img.src = parsed.Poster;
-        title = parsed.name;
+        title.innerText = parsed.Title;
+        body.appendChild(title);
+        console.log(parsed);
     })
     xhr.open("GET", url);
     xhr.send();
