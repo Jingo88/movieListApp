@@ -134,7 +134,7 @@ a{
 }
 
 #movieSearch{
-	position: absolute;
+	position: relative;
 	width: 70%;
 	height: 40%;
 	/*top: 30%;*/
@@ -143,8 +143,41 @@ a{
 	border: 2px solid red;
 }
 
+#movieInput{
+	position: relative;
+	height: 40%;
+	top: 30%;
+	width: 60%;
+	left: 20%;
+}
 
+#movieFound{
+	width: 60%;
+	left: 20%;
+	position: relative;
+	border: 2px solid blue;
+	height: 40%;
+}
 
+#movieCover{
+	position: relative;
+	float: left;
+	border: 2px solid green;
+	width:40%;
+}
+
+img{
+	height: 100%;
+}
+
+#movieInfo{
+	border: 2px solid yellow;
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 100%;
+	overflow: auto;
+}
 
 #toppage{
 	background-color: #8f3131;

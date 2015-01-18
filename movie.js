@@ -31,6 +31,7 @@ var body = document.querySelector('body');
 var submit = document.querySelector('#movieFind');
 var input = document.querySelector('#movieInput');
 var result = document.querySelector('#movieFound');
+var movieInfo = document.querySelector('#movieInfo');
 
 var img = document.querySelector('img');
 var title = document.querySelector('#title');
@@ -123,11 +124,11 @@ function findPoster() {
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
 
-        body.appendChild(title);
-        body.appendChild(cast);
-        body.appendChild(directors);
-        body.appendChild(writers);
-        body.appendChild(genre);
+        movieInfo.appendChild(title);
+        movieInfo.appendChild(cast);
+        movieInfo.appendChild(directors);
+        movieInfo.appendChild(writers);
+        movieInfo.appendChild(genre);
         console.log(parsed);
     })
     xhr.open("GET", url);
