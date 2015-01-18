@@ -7,7 +7,8 @@ var cast = document.querySelector('#actors');
 var directors = document.querySelector('#directors');
 var writers = document.querySelector('#writers');
 var genre = document.querySelector('#genre');
-
+var rank = document.querySelector('#topRank');
+var category = document.querySelector('.category');
 
 //run the find poster function on click or enter
 submit.addEventListener('click', function() {
@@ -18,6 +19,26 @@ input.addEventListener('keyup', function(e) {
         findPoster();
     }
 })
+
+category.addEventListener('click', function(){
+    topHundred();
+})
+
+function topHundred(){
+    var movie = input.value
+
+    var movie_url = encodeURI(movie)
+    var url = "http://omdbapi.com/?t=" + movie_url
+    var xhr = new XMLHttpRequest();
+    
+    xhr.addEventListener('load', function(e) {
+
+    }
+    xhr.open("GET", url);
+    xhr.send();
+}
+
+
 
 function findPoster() {
     var movie = input.value
@@ -30,6 +51,8 @@ function findPoster() {
 
         var d = xhr.responseText
         var parsed = JSON.parse(d)
+
+        //bringing in the list of movie stuff
         var castName = parsed.Actors.split(',');
         var directorName = parsed.Director.split(',');
         var writerName = parsed.Writer.split(',');
@@ -58,6 +81,8 @@ function findPoster() {
             li.innerText = genreType[i];
             genre.appendChild(li);
         };
+
+
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
 
