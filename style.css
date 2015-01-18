@@ -17,6 +17,15 @@ body{
 	font-size: 30px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	list-style-type: none;
+}
+
+.type{
+	list-style-type: none;
+}
+
+a{
+	color: black;
 }
 
 #navBar {
@@ -46,8 +55,6 @@ body{
 }
 
 .page{
-/*	height: 100vh;
-	background-size: cover;*/
     position: fixed;
     width: 100%;
     left: 0;
@@ -70,7 +77,6 @@ body{
 
 .page:after{
 	position: absolute;
-    /*content: ' ';*/
     left: 100%;
     top: 0;
     right: 0;

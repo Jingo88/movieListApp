@@ -33,10 +33,10 @@ function topHundred(){
     
     xhr.addEventListener('load', function(e) {
 
-    }
+    })
     xhr.open("GET", url);
     xhr.send();
-})
+}
 
 
 
