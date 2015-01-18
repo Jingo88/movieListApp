@@ -26,14 +26,18 @@ function findPoster() {
 
         var d = xhr.responseText
         var parsed = JSON.parse(d)
+        var castName = parsed.Actors.split(',');
+
+        for (i=0; i<castName.length; i++){
+            var li = document.createElement("li");
+            
+            li.innerText = castName[i];
+            cast.appendChild(li);
+        };
 
         img.src = parsed.Poster;
         title.innerText = parsed.Title;
-        for (i=0; i<parsed.Actors.length; i++){
-            var li = document.createElement("li");
-            li.innerText = parsed.Actors[i];
-            cast.appendChild(li);
-        };
+
         body.appendChild(title);
         body.appendChild(cast);
         console.log(parsed);
