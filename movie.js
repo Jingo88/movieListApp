@@ -63,15 +63,16 @@ submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
     $('.refresh').empty();
     findPoster();
+    boom();
 });
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         $('#movieFound').removeClass('disappear').addClass('appear');
         $('.refresh').empty();
         findPoster();
+        boom();
     }
 })
-
 
 $('.movieRank').click(function(){
     var movie = $(this).text()
@@ -194,38 +195,49 @@ function findPoster() {
     xhr.send();
 }
 
-//THIS IS YOUR RT API KEY
-// ten5jh5qwb6zsq3c6z5gwhrm
+// THIS IS YOUR RT API KEY
+//tutuzpx6jygc5wretb22bqnj
 
-//Rotten Tomatoes API Example with Javascript
+// Rotten Tomatoes API Example with Javascript
+// where in this api example code does it allow me to get multiple movies based off similar titles
+//is it part of the ajax data type function?
 
-// var apikey = "myapikey";
-// var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
+
+var apikey = "tutuzpx6jygc5wretb22bqnj";
+var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
  
-// // construct the uri with our apikey
-// var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + apikey;
+// construct the uri with our apikey
+var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + apikey;
 // var query = "Gone with the Wind";
  
-// $(document).ready(function() {
+function boom() {
  
-//   // send off the query
-//   $.ajax({
-//     url: moviesSearchUrl + '&q=' + encodeURI(query),
-//     dataType: "jsonp",
-//     success: searchCallback
-//   });
-// });
+    var query = input.value;     
+    console.log(query);
+  // send off the query
+  $.ajax({
+    url: moviesSearchUrl + '&q=' + encodeURI(query),
+    dataType: "jsonp",
+    success: searchCallback
+  });
+};
  
-// // callback for when we get back the results
-// function searchCallback(data) {
-//  $(document.body).append('Found ' + data.total + ' results for ' + query);
-//  var movies = data.movies;
-//  $.each(movies, function(index, movie) {
-//    $(document.body).append('<h1>' + movie.title + '</h1>');
+// callback for when we get back the results
+function searchCallback(data) {
+    var query = input.value; 
+ $(document.body).append('Found ' + data.total + ' results for ' + query);
+ var movies = data.movies;
 
-//    $(document.body).append('<img src="' + movie.posters.thumbnail + '" />');
+ $.each(movies, function(index, movie) {
 
-//  });
+    // body.appendChild('<h1>' + movie.title + '<h1>');
+    console.log("we are in the searchCallback function")
+    console.log(movies)
+   $(document.body).append('<h1>' + movie.title + '</h1>');
 
-// }
+   $(document.body).append('<img src="' + movie.posters.thumbnail + '" />');
+
+ });
+
+}
 
