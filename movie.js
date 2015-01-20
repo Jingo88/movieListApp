@@ -235,20 +235,30 @@ function searchCallback(data) {
  $(document.body).append('Found ' + data.total + ' results for ' + query);
  var movies = data.movies;
 
+//the for each loops through the entire object and grabs all movies with the same/similar title
  $.each(movies, function(index, movie) {
 
+    //code below is printing a new li with a link tag inside every time this loops
         var li = document.createElement("li");
-        li.innerText = movie.title;
+        li.innerHTML = "<a href=''>" + movie.title + "</a>";
         rotten.appendChild(li);
 
-    // body.appendChild('<h1>' + movie.title + '<h1>');
-    console.log("we are in the searchCallback function")
     console.log(movies)
+
+    // the below jQuery came with the example
+    
+    
    $(document.body).append('<h1>' + movie.title + '</h1>');
 
    $(document.body).append('<img src="' + movie.posters.thumbnail + '" />');
-
  });
-
 }
+
+//how do you want to format your home page? 
+//if the object has more than one movie then loop through it and create a list
+// if the object only has one movie than print out the stuff.
+//how do you want to combine the omdb and rotten tomatoes api information?
+
+
+
 
