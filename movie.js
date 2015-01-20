@@ -34,7 +34,7 @@ var movieInfo = document.querySelector('#movieInfo');
 
 
 // Declared variables for the home page
-var img = document.querySelector('img');
+var cover = document.querySelector('#movieCover');
 var title = document.querySelector('#title');
 var cast = document.querySelector('#actors');
 var directors = document.querySelector('#directors');
@@ -61,18 +61,16 @@ var listgenre = document.querySelector('#listgenre');
 submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
     $('.refresh').empty();
-
-    if ()
-    findPoster();
-    boom();
+    // findPoster();
+    findMovie();
     moveBar();
 });
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         $('#movieFound').removeClass('disappear').addClass('appear');
         $('.refresh').empty();
-        findPoster();
-        boom();
+        // findPoster();
+        findMovie();
         moveBar();
     }
 })
@@ -187,8 +185,7 @@ function findPoster() {
             genre.appendChild(li);
         };
 
-
-        img.src = parsed.Poster;
+        cover.innerHTML = "<img src='" + parsedPoster + "'>"
         title.innerText = parsed.Title;
 
 
@@ -218,7 +215,7 @@ var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
 var moviesSearchUrl = baseUrl + '/movies.json?apikey=' + apikey;
 // var query = "Gone with the Wind";
  
-function boom() {
+function findMovie() {
  
     var query = input.value;     
     console.log(query);
@@ -227,42 +224,42 @@ function boom() {
     url: moviesSearchUrl + '&q=' + encodeURI(query),
     //is it better to use json or jsonp datatype?
     dataType: "jsonp",
-    success: searchCallback
+    success: homeSearch
   });
 };
  
 // callback for when we get back the results
-function searchCallback(data) {
-    var query = input.value; 
-    //the data makes an array with objects inside
-    console.log("this is the data   " + data);
+// function searchCallback(data) {
+//     // var query = input.value; 
+//     //the data makes an array with objects inside
+//     console.log("this is the data   " + data);
 
-    // var parsed = JSON.parse(data);
-    // console.log("DOES PARSED WORK?   " + parsed)
+//     // var parsed = JSON.parse(data);
+//     // console.log("DOES PARSED WORK?   " + parsed)
 
- // $(document.body).append('Found ' + data.total + ' results for ' + query);
- var movies = data.movies;
+//  // $(document.body).append('Found ' + data.total + ' results for ' + query);
+//  var movies = data.movies;
 
-    console.log("The MOVIES   " + movies)
+//     console.log("The MOVIES   " + movies)
 
-//the for each loops through the entire object and grabs all movies with the same/similar title
- $.each(movies, function(index, movie) {
+// //the for each loops through the entire object and grabs all movies with the same/similar title
+//  $.each(movies, function(index, movie) {
 
-    //code below is printing a new li with a link tag inside every time this loops
-        var li = document.createElement("li");
-        li.innerHTML = "<a href=''>" + movie.title + "</a>";
-        rotten.appendChild(li);
+//     //code below is printing a new li with a link tag inside every time this loops
+//         var li = document.createElement("li");
+//         li.innerHTML = "<a href=''>" + movie.title + "</a>";
+//         rotten.appendChild(li);
 
-    console.log(movies)
+//     console.log(movies)
 
-    // the below jQuery came with the example
+//     // the below jQuery came with the example
     
     
-   $(document.body).append('<h1>' + movie.title + '</h1>');
+//    $(document.body).append('<h1>' + movie.title + '</h1>');
 
-   $(document.body).append('<img src="' + movie.posters.thumbnail + '" />');
- });
-}
+//    $(document.body).append('<img src="' + movie.posters.thumbnail + '" />');
+//  });
+// }
 
 //how do you want to format your home page? 
 //if the object has more than one movie then loop through it and create a list
@@ -270,11 +267,20 @@ function searchCallback(data) {
 //how do you want to combine the omdb and rotten tomatoes api information?
 //make each li clickable just like what we did with the other list?
 
-// function homeSearch(data){
-//     var query = input.value;
+function homeSearch(data){
+    var movies = data.movies;
 
+    if (movies.length >= 2) {
+        $.each(movies, function(index, movie) {
+            var li = document.createElement('li');
+            li.innerHTML = "<a href=''>" + movie.title + "</a>";
+            rotten.appendChild(li);
+        });
+    } else {
+        findPoster();
+    }
 
-// }
+}
 
 
 
