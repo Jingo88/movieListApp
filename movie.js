@@ -44,7 +44,7 @@ var genre = document.querySelector('#genre');
 var year = document.querySelector('#year');
 var movierating = document.querySelector('#year');
 var imdbrating = document.querySelector('#year');
-
+var rotten = document.querySelector('#rtstuff');
 
 
 // Declared variables for the rankings page
@@ -64,6 +64,7 @@ submit.addEventListener('click', function() {
     $('.refresh').empty();
     findPoster();
     boom();
+    moveBar();
 });
 input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
@@ -71,8 +72,14 @@ input.addEventListener('keyup', function(e) {
         $('.refresh').empty();
         findPoster();
         boom();
+        moveBar();
     }
 })
+
+function moveBar(){
+    $('#movieSearch').css('top', '5%');
+
+}
 
 $('.movieRank').click(function(){
     var movie = $(this).text()
@@ -229,6 +236,10 @@ function searchCallback(data) {
  var movies = data.movies;
 
  $.each(movies, function(index, movie) {
+
+        var li = document.createElement("li");
+        li.innerText = movie.title;
+        rotten.appendChild(li);
 
     // body.appendChild('<h1>' + movie.title + '<h1>');
     console.log("we are in the searchCallback function")

@@ -143,19 +143,27 @@ a{
 #movieSearch{
 	position: relative;
 	width: 70%;
-	height: 40%;
-	/*top: 30%;*/
+	height: 6%;
+	top: 30%;
 	margin-left: auto;
 	margin-right: auto;
 	border: 2px solid red;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	transition: all 1s ease;
 }
 
 #movieInput{
 	position: relative;
-	height: 40%;
-	top: 30%;
+	height: 100%;
 	width: 60%;
-	left: 20%;
+	float: left;
+}
+
+#movieFind{
+	height: 100%;
+	width: 30%;
+	margin-left: 5%;
 }
 
 #movieFound{
