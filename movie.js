@@ -61,7 +61,6 @@ var listgenre = document.querySelector('#listgenre');
 submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
     $('.refresh').empty();
-    // findPoster();
     findMovie();
     moveBar();
 });
@@ -69,7 +68,6 @@ input.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         $('#movieFound').removeClass('disappear').addClass('appear');
         $('.refresh').empty();
-        // findPoster();
         findMovie();
         moveBar();
     }
@@ -274,16 +272,78 @@ function homeSearch(data){
         $.each(movies, function(index, movie) {
             var li = document.createElement('li');
             li.innerHTML = "<a href=''>" + movie.title + "</a>";
+            li.setAttribute('class', 'similarMovie')
             rotten.appendChild(li);
         });
     } else {
         findPoster();
     }
-
 }
 
+$('.similarMovie').click(function(){
+
+})
 
 
+
+    var movie = $(this).text()
+    console.log(this);
+    console.log(movie);
+    $('.refresh').empty();
+
+    var movie_url = encodeURI(movie)
+    var url = "http://omdbapi.com/?t=" + movie_url
+    var xhr = new XMLHttpRequest();
+    
+    xhr.addEventListener('load', function(e) {
+
+        var d = xhr.responseText
+        var parsed = JSON.parse(d)
+
+        //bringing in the list of movie stuff
+        var castName = parsed.Actors.split(',');
+        var directorName = parsed.Director.split(',');
+        var writerName = parsed.Writer.split(',');
+        var genreType = parsed.Genre.split(',');
+
+        for (i=0; i<castName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = castName[i];
+            listcast.appendChild(li);
+        };
+
+        for (i=0; i<directorName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = directorName[i];
+            listdirectors.appendChild(li);
+        };
+
+        for (i=0; i<writerName.length; i++){
+            var li = document.createElement("li");
+            li.innerText = writerName[i];
+            listwriters.appendChild(li);
+        };
+
+        for (i=0; i<genreType.length; i++){
+            var li = document.createElement("li");
+            li.innerText = genreType[i];
+            listgenre.appendChild(li);
+        };
+
+
+        // img.src = parsed.Poster;
+
+        listtitle.innerText = parsed.Title;
+        listmovieInfo.appendChild(listtitle);
+        listmovieInfo.appendChild(listcast);
+        listmovieInfo.appendChild(listdirectors);
+        listmovieInfo.appendChild(listwriters);
+        listmovieInfo.appendChild(listgenre);
+
+        console.log(parsed)
+    })
+    xhr.open("GET", url);
+    xhr.send();
 
 
 
