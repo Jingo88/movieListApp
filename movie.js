@@ -198,15 +198,13 @@ function findPoster() {
     xhr.send();
 }
 
-// THIS IS YOUR RT API KEY
-//tutuzpx6jygc5wretb22bqnj
 
 // Rotten Tomatoes API Example with Javascript
 // where in this api example code does it allow me to get multiple movies based off similar titles
 //is it part of the ajax data type function?
 
 
-var apikey = "tutuzpx6jygc5wretb22bqnj";
+var apikey = "";
 var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
  
 // construct the uri with our apikey
@@ -281,69 +279,70 @@ function homeSearch(data){
 }
 
 $('.similarMovie').click(function(){
+    var selected = $(this).text();
 
 })
 
 
 
-    var movie = $(this).text()
-    console.log(this);
-    console.log(movie);
-    $('.refresh').empty();
+    // var movie = $(this).text()
+    // console.log(this);
+    // console.log(movie);
+    // $('.refresh').empty();
 
-    var movie_url = encodeURI(movie)
-    var url = "http://omdbapi.com/?t=" + movie_url
-    var xhr = new XMLHttpRequest();
+    // var movie_url = encodeURI(movie)
+    // var url = "http://omdbapi.com/?t=" + movie_url
+    // var xhr = new XMLHttpRequest();
     
-    xhr.addEventListener('load', function(e) {
+    // xhr.addEventListener('load', function(e) {
 
-        var d = xhr.responseText
-        var parsed = JSON.parse(d)
+    //     var d = xhr.responseText
+    //     var parsed = JSON.parse(d)
 
-        //bringing in the list of movie stuff
-        var castName = parsed.Actors.split(',');
-        var directorName = parsed.Director.split(',');
-        var writerName = parsed.Writer.split(',');
-        var genreType = parsed.Genre.split(',');
+    //     //bringing in the list of movie stuff
+    //     var castName = parsed.Actors.split(',');
+    //     var directorName = parsed.Director.split(',');
+    //     var writerName = parsed.Writer.split(',');
+    //     var genreType = parsed.Genre.split(',');
 
-        for (i=0; i<castName.length; i++){
-            var li = document.createElement("li");
-            li.innerText = castName[i];
-            listcast.appendChild(li);
-        };
+    //     for (i=0; i<castName.length; i++){
+    //         var li = document.createElement("li");
+    //         li.innerText = castName[i];
+    //         listcast.appendChild(li);
+    //     };
 
-        for (i=0; i<directorName.length; i++){
-            var li = document.createElement("li");
-            li.innerText = directorName[i];
-            listdirectors.appendChild(li);
-        };
+    //     for (i=0; i<directorName.length; i++){
+    //         var li = document.createElement("li");
+    //         li.innerText = directorName[i];
+    //         listdirectors.appendChild(li);
+    //     };
 
-        for (i=0; i<writerName.length; i++){
-            var li = document.createElement("li");
-            li.innerText = writerName[i];
-            listwriters.appendChild(li);
-        };
+    //     for (i=0; i<writerName.length; i++){
+    //         var li = document.createElement("li");
+    //         li.innerText = writerName[i];
+    //         listwriters.appendChild(li);
+    //     };
 
-        for (i=0; i<genreType.length; i++){
-            var li = document.createElement("li");
-            li.innerText = genreType[i];
-            listgenre.appendChild(li);
-        };
+    //     for (i=0; i<genreType.length; i++){
+    //         var li = document.createElement("li");
+    //         li.innerText = genreType[i];
+    //         listgenre.appendChild(li);
+    //     };
 
 
-        // img.src = parsed.Poster;
+    //     // img.src = parsed.Poster;
 
-        listtitle.innerText = parsed.Title;
-        listmovieInfo.appendChild(listtitle);
-        listmovieInfo.appendChild(listcast);
-        listmovieInfo.appendChild(listdirectors);
-        listmovieInfo.appendChild(listwriters);
-        listmovieInfo.appendChild(listgenre);
+    //     listtitle.innerText = parsed.Title;
+    //     listmovieInfo.appendChild(listtitle);
+    //     listmovieInfo.appendChild(listcast);
+    //     listmovieInfo.appendChild(listdirectors);
+    //     listmovieInfo.appendChild(listwriters);
+    //     listmovieInfo.appendChild(listgenre);
 
-        console.log(parsed)
-    })
-    xhr.open("GET", url);
-    xhr.send();
+    //     console.log(parsed)
+    // })
+    // xhr.open("GET", url);
+    // xhr.send();
 
 
 
