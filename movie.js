@@ -5,7 +5,6 @@ $(document).ready(function(){
     $('#televisionpage').addClass('disappear');
     $('#documentarypage').addClass('disappear');
     $('#movieFound').addClass('disappear');
-    // result.setAttribute('class', 'disappear');
     pageNavigation();
 
 })
@@ -62,6 +61,8 @@ var listgenre = document.querySelector('#listgenre');
 submit.addEventListener('click', function() {
     $('#movieFound').removeClass('disappear').addClass('appear');
     $('.refresh').empty();
+
+    if ()
     findPoster();
     boom();
     moveBar();
@@ -224,6 +225,7 @@ function boom() {
   // send off the query
   $.ajax({
     url: moviesSearchUrl + '&q=' + encodeURI(query),
+    //is it better to use json or jsonp datatype?
     dataType: "jsonp",
     success: searchCallback
   });
@@ -232,8 +234,16 @@ function boom() {
 // callback for when we get back the results
 function searchCallback(data) {
     var query = input.value; 
- $(document.body).append('Found ' + data.total + ' results for ' + query);
+    //the data makes an array with objects inside
+    console.log("this is the data   " + data);
+
+    // var parsed = JSON.parse(data);
+    // console.log("DOES PARSED WORK?   " + parsed)
+
+ // $(document.body).append('Found ' + data.total + ' results for ' + query);
  var movies = data.movies;
+
+    console.log("The MOVIES   " + movies)
 
 //the for each loops through the entire object and grabs all movies with the same/similar title
  $.each(movies, function(index, movie) {
@@ -258,6 +268,26 @@ function searchCallback(data) {
 //if the object has more than one movie then loop through it and create a list
 // if the object only has one movie than print out the stuff.
 //how do you want to combine the omdb and rotten tomatoes api information?
+//make each li clickable just like what we did with the other list?
+
+// function homeSearch(data){
+//     var query = input.value;
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
